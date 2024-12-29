@@ -21,7 +21,10 @@ def scroll_to_footer(content_container):
                 EC.presence_of_element_located((By.ID, "bottom-footer"))
             )
             # Scroll to the footer
-            driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'end'});", footer)
+            driver.execute_script(
+                "arguments[0].scrollIntoView({behavior: 'smooth', block: 'end'});",
+                footer
+            )
             print("Scrolled to footer.")
             time.sleep(2)  # Allow time for new content to load
 
