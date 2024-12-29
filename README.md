@@ -1,14 +1,14 @@
-# Kojo Trick Lab Local Backup Tools
+# Kojo's Trick Lab Local Backup Tools
 
 ## Overview
-This project consists of three Python scripts designed to help back up videos from Kojo Trick Lab to your local machine for personal use during training sessions. The tools allow you to crawl the video library, extract video download links, and fetch the videos while maintaining their directory structure.
+This project consists of three Python scripts designed to help back up videos from Kojo's Trick Lab to your local machine for personal use during training sessions. The tools allow you to crawl the video library, extract video download links, and fetch the videos while maintaining their directory structure.
 
 ### Disclaimer
 **This project was created solely for personal backup purposes. Under no circumstances should this project be used to violate copyright law or distribute the content without permission. Respect the rights of content creators and ensure all usage complies with applicable laws and the terms of service of the website.**
 
 ## Scripts
 ### 1. `video_crawler.py`
-Crawls the Kojo Trick Lab website and identifies all videos available in the library.
+Crawls the Kojo's Trick Lab website and identifies all videos available in the library.
 
 - **Input:** None (scrapes directly from the website).
 - **Output:** `crawled.json` containing metadata and structure of the video library.
@@ -60,7 +60,7 @@ python video_fetcher.py --path <download-directory>
 
 ## Important Notes
 - **Respect Copyright**: These tools are for personal backup purposes only. Do not use them to violate copyright law or share/download content without proper authorisation.
-- **Video Access**: Ensure you have access to the videos on the Kojo Trick Lab platform before attempting to back them up.
+- **Video Access**: Ensure you have access to the videos on the Kojo's Trick Lab platform before attempting to back them up.
 
 ## License
 This project is licensed under the MIT License. See the `LICENSE` file for details.
