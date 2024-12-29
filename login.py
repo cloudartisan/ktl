@@ -9,6 +9,7 @@ def login(driver, email, password):
     chrome_options.add_argument("--disable-background-timer-throttling")
     chrome_options.add_argument("--disable-backgrounding-occluded-windows")
     chrome_options.add_argument("--disable-renderer-backgrounding")
+
     driver.options = chrome_options
     driver.get("https://www.kojostricklab.com/login")
 
