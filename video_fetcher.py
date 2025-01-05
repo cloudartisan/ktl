@@ -11,19 +11,33 @@ def check_yt_dlp():
         print("Error: yt-dlp is not installed or not found in PATH. Please install yt-dlp to proceed.")
         exit(1)
 
-def load_fetched_videos(fetched_file):
-    """Load the fetched videos metadata from the specified JSON file.
+def init_fetched_videos(fetched_file):
+    """Ensure the fetched data file is valid or initialize it.
 
     Args:
         fetched_file (str): Path to the JSON file containing fetched videos metadata.
 
     Returns:
-        dict: Dictionary containing metadata of fetched videos.
+        dict: Dictionary containing validated or newly initialized fetched videos metadata.
     """
     if os.path.exists(fetched_file):
         with open(fetched_file, "r") as f:
-            return json.load(f)
-    return {}
+            try:
+                fetched_data = json.load(f)
+                if isinstance(fetched_data, dict):
+                    return fetched_data
+                else:
+                    print("Warning: fetched.json is not a dictionary. Reinitializing.")
+            except json.JSONDecodeError:
+                print("Warning: fetched.json is not valid JSON. Reinitializing.")
+    else:
+        print("fetched.json does not exist. Creating a new one.")
+
+    # Reinitialize fetched_data as an empty dictionary
+    fetched_data = {}
+    with open(fetched_file, "w") as f:
+        json.dump(fetched_data, f, indent=4)
+    return fetched_data
 
 def save_fetched_videos(fetched_file, fetched_data):
     """Save the fetched videos metadata to the specified JSON file.
@@ -114,7 +128,7 @@ def main():
     with open(input_file, "r") as f:
         videos = json.load(f)
 
-    fetched_data = load_fetched_videos(fetched_file)
+    fetched_data = init_fetched_videos(fetched_file)
 
     for video in videos:
         download_video(video, args.path, fetched_file, fetched_data, args.force)
