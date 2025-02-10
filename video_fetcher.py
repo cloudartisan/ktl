@@ -61,7 +61,9 @@ def is_video_fetched(video, fetched_data, output_file):
         bool: True if the video is already fetched; False otherwise.
     """
     if video["vimeo_url"] in fetched_data:
+        print(f"Already fetched {video['vimeo_url']}")
         return True
+    print(f"Checking filesystem for {output_file}")
     return os.path.exists(output_file) and os.path.getsize(output_file) > 0
 
 def download_video(video, output_directory, fetched_file, fetched_data, force):
